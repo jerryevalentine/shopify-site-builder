@@ -1,0 +1,6 @@
+variable,value,description
+--primary-color,#008080,Teal - Primary CTA and buttons
+--accent-color,#AEE6D6,Light teal - hover accents and highlights
+--dark-bg,#2C1B17,Dark brown - background
+--light-text,#F3E6D2,Cream - main text color
+--gold-accent,#D1A35F,Gold - icons, emphasis

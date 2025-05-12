@@ -1,0 +1,25 @@
+<!-- page.festival.liquid -->
+{% layout 'page' %}
+
+<div class="festival-banner">
+  <h1>Welcome to the Festival Shop!</h1>
+  <p>Explore our latest festival outfits and accessories.</p>
+  <a href="/collections/festival-wear" class="button">Shop Now</a>
+</div>
+
+<style>
+.festival-banner {
+  background: url('{{ 'festival-banner.jpg' | asset_url }}') no-repeat center;
+  background-size: cover;
+  padding: 100px 20px;
+  text-align: center;
+  color: white;
+}
+.festival-banner .button {
+  background-color: #ff3366;
+  padding: 12px 24px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+}
+</style>

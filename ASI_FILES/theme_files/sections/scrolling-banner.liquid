@@ -1,0 +1,73 @@
+<!-- sections/scrolling-banner.liquid -->
+<div class="scrolling-text-banner" id="scrollingBanner">
+  <div class="scrolling-text-inner">
+    <a href="{{ section.settings.link_url }}" class="scrolling-link">
+      {% for i in (1..30) %}
+        <span>{{ section.settings.message_text }}</span>
+      {% endfor %}
+    </a>
+  </div>
+  <button class="banner-close" onclick="document.getElementById('scrollingBanner').style.display='none'">&times;</button>
+</div>
+
+<style>
+.scrolling-text-banner {
+  position: relative;
+  overflow: hidden;
+  background-color: #252525;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  padding: 10px 0;
+  font-size: 16px;
+  white-space: nowrap;
+}
+.scrolling-text-inner {
+  display: inline-block;
+  animation: scroll-left 20s linear infinite;
+}
+.scrolling-link {
+  color: inherit;
+  text-decoration: none;
+}
+.banner-close {
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  background: none;
+  color: white;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+}
+@keyframes scroll-left {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Scrolling Banner",
+  "tag": "section",
+  "class": "scrolling-text",
+  "settings": [
+    {
+      "type": "text",
+      "id": "message_text",
+      "label": "Banner Message",
+      "default": "WORLDWIDE WHOLESALE & DROP SHIPPING"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Optional Link URL",
+      "default": "/collections/all"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Scrolling Banner"
+    }
+  ]
+}
+{% endschema %}

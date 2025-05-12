@@ -1,0 +1,17 @@
+C:\Users\jerry\Shopify_API
+│
+├── deploy.py
+├── utils\
+│   └── shopify_api.py
+├── csv\
+│   ├── sku_master.csv
+│   ├── page_url.csv
+│   ├── page_sku.csv
+│   ├── sku_images.csv
+│   ├── pages.csv
+│   └── navigation_links.csv
+├── images\
+│   ├── summer_sale_banner.jpg
+│   └── other product images
+├── theme_files\
+│   └── page.festival.liquid

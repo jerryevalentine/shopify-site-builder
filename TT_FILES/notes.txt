@@ -1,0 +1,41 @@
+# deploy.py
+
+from utils.shopify_api import create_product, create_collection, add_product_to_collection, upload_image
+import pandas as pd
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+# Step 1: Read CSVs
+products_df = pd.read_csv('csv/sku_master.csv')
+collections_df = pd.read_csv('csv/page_url.csv')
+page_sku_df = pd.read_csv('csv/page_sku.csv')
+images_df = pd.read_csv('csv/sku_images.csv')
+
+# Step 2: Create or Update Products
+for _, row in products_df.iterrows():
+    create_product(row)
+
+# Step 3: Create Collections
+for _, row in collections_df.iterrows():
+    create_collection(row)
+
+# Step 4: Assign Products to Collections
+for _, row in page_sku_df.iterrows():
+    add_product_to_collection(row)
+
+# Step 5: Upload Images
+for _, row in images_df.iterrows():
+    upload_image(row)
+
+https://ifzmze-sz.myshopify.com
+
+Admin API access token
+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
+
+API key
+b1089146b3e0b3d205cc9f637a7797b8
+
+API secret key
+b7a590e2e0b278f2da6bb4616631e274

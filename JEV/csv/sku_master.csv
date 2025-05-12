@@ -1,0 +1,11 @@
+SKU,Product Name,Brand,Category,Subcategory,Description,Price,Image Filename
+SKU1,Product_1,Brand_1,Category_1,Category_1a,Description_1,1.99,
+SKU2,Product_2,Brand_1,Category_1,Category_1a,Description_2,2.99,
+SKU3,Product_3,Brand_1,Category_1,Category_1b,Description_3,3.99,
+SKU4,Product_4,Brand_1,Category_2,Category_2a,Description_4,4.99,
+SKU5,Product_5,Brand_1,Category_2,Category_2a,Description_5,5.99,
+SKU6,Product_6,Brand_2,Category_2,Category_2b,Description_6,6.99,
+SKU7,Product_7,Brand_2,Category_3,Category_3a,Description_7,7.99,
+SKU8,Product_8,Brand_2,Category_3,Category_3a,Description_8,8.99,
+SKU9,Product_9,Brand_2,Category_3,Category_3b,Description_9,9.99,
+SKU10,Product_10,Brand_2,Category_3,Category_3b,Description_10,10.99,

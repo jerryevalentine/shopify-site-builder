@@ -1,0 +1,11 @@
+SKU,Product Name,Brand,Category,Subcategory,Description,Price,Image Filename
+SKU001,Lingerie Style 1,TestBrand,Lingerie,TestSubcategory,A stylish lingerie outfit for testing purposes.,29.99,1F.jpg
+SKU002,Lingerie Style 2,TestBrand,Lingerie,TestSubcategory,A stylish lingerie outfit for testing purposes.,29.99,2F.jpg
+SKU003,Costumes Style 3,TestBrand,Costumes,TestSubcategory,A stylish costumes outfit for testing purposes.,29.99,3F.jpg
+SKU004,Costumes Style 4,TestBrand,Costumes,TestSubcategory,A stylish costumes outfit for testing purposes.,29.99,4F.jpg
+SKU005,Rave Wear Style 5,TestBrand,Rave Wear,TestSubcategory,A stylish rave wear outfit for testing purposes.,29.99,5F.jpg
+SKU006,Rave Wear Style 6,TestBrand,Rave Wear,TestSubcategory,A stylish rave wear outfit for testing purposes.,29.99,6F.jpg
+SKU007,Swimwear Style 7,TestBrand,Swimwear,TestSubcategory,A stylish swimwear outfit for testing purposes.,29.99,7F.jpg
+SKU008,Swimwear Style 8,TestBrand,Swimwear,TestSubcategory,A stylish swimwear outfit for testing purposes.,29.99,8F.jpg
+SKU009,Accessories Style 9,TestBrand,Accessories,TestSubcategory,A stylish accessories outfit for testing purposes.,29.99,9F.jpg
+SKU010,Accessories Style 10,TestBrand,Accessories,TestSubcategory,A stylish accessories outfit for testing purposes.,29.99,10F.jpg

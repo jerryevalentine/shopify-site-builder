@@ -1,0 +1,16 @@
+Menu Name,Link Title,Link Type,Target Title
+Main menu,New Arrivals,collection,new-arrivals
+Main menu,Best Sellers,collection,best-sellers
+Main menu,Festival,collection,festival
+Main menu,Rave,collection,rave
+Main menu,Costumes,collection,costumes
+Main menu,Lingerie,collection,lingerie
+Main menu,Accessories,collection,accessories
+Main menu,Sale,collection,sale
+Main menu,Gift Cards,product,gift-card
+Footer,All Products,collection,all
+Footer,Contact Us,page,contact-us
+Footer,Privacy Policy,page,privacy-policy
+Footer,Terms of Service,page,terms-of-service
+Footer,Shipping Info,page,shipping
+Footer,Returns & Exchanges,page,returns-and-exchanges

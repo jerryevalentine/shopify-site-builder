@@ -1,0 +1,8 @@
+
+/* Injected by Shopify_api_aethetics.py */
+body {
+  background-image: url('{{ "background.jpg" | asset_url }}');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}

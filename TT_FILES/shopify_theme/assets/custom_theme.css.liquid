@@ -1,0 +1,58 @@
+:root {
+  --primary-color: #008080;
+  --accent-color: #AEE6D6;
+  --dark-bg: #2C1B17;
+  --light-text: #F3E6D2;
+  --gold-accent: #D1A35F;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-image: url('{{ "background.jpg" | asset_url }}');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+  color: var(--dark-bg);
+  background-color: var(--light-text);
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* Buttons */
+.button,
+.shopify-payment-button__button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover,
+.shopify-payment-button__button:hover {
+  background-color: var(--accent-color);
+  color: var(--dark-bg);
+}
+
+/* Header and Footer */
+.site-header,
+.site-footer {
+  background-color: var(--dark-bg);
+  color: var(--light-text);
+}
+
+/* Highlights and Icons */
+.highlight,
+.icon {
+  color: var(--gold-accent);
+}
+
+/* Accent elements */
+.badge,
+a:hover,
+a:focus {
+  color: var(--accent-color);
+}
