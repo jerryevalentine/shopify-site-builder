@@ -71,9 +71,10 @@ print("\n📦 Uploading Products...")
 for _, row in products_df.iterrows():
     try:
         create_product(row)
-        print(f"✅ Uploaded Product: {row['Product Name']}")
+        print(f"✅ Uploaded Product: {row['Product_Name']}")
     except Exception as e:
-        print(f"❌ Failed to upload product {row['Product Name']}: {e}")
+        print(f"❌ Failed to upload product {row['Product_Name']}: {e}")
+
 
 # Step 3: Create Collections
 print("\n🗂️ Creating Collections...")
