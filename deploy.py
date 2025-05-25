@@ -24,10 +24,12 @@ from utils.shopify_api import (
     upload_asset,
     inject_assets_into_theme,
     #inject_scrolling_banner,
-    inject_splash_screen
+    inject_splash_screen,
+    upload_hover_snippets_from_csv,
+    insert_multiple_snippets_into_theme_file
 )
 
-# Step 0: Load environment variables
+# Step 0: Load environment variables and Shopify REST session
 load_dotenv()
 
 SHOPIFY_STORE_URL = os.getenv('SHOPIFY_STORE_URL')
@@ -35,6 +37,14 @@ SHOPIFY_ACCESS_TOKEN = os.getenv('SHOPIFY_ACCESS_TOKEN')
 SHOPIFY_API_VERSION = os.getenv('SHOPIFY_API_VERSION', '2023-04')
 FOLDER = os.getenv('FOLDER')
 THEME_ID = os.getenv('THEME_ID')
+
+# Create Shopify REST session
+session = requests.Session()
+session.headers.update({
+    "X-Shopify-Access-Token": SHOPIFY_ACCESS_TOKEN,
+    "Content-Type": "application/json"
+})
+session.shop = SHOPIFY_STORE_URL.replace("https://", "")
 
 HEADERS = {
     "Content-Type": "application/json",
@@ -221,7 +231,7 @@ aesthetic_assets = [
 ]
 
 # Step 12: Upload Scrolling Banner Section
-print("\n🧩 Uploading Scrolling Banner Section...")
+print("\n🧩 Step 12: Uploading Scrolling Banner Section...")
 
 section_file = os.path.join(BASE_DIR, FOLDER, "theme_files", "sections", "scrolling-banner.liquid")
 
@@ -236,6 +246,32 @@ if os.path.exists(section_file):
 else:
     print(f"⚠️ Section file not found: {section_file}")
 
+# Step 13: Upload Hover Image Snippets and Assets
+print("\n🖼️ Step 13: Uploading Hover Image Snippets and Assets...")
+
+csv_path = 'csv/sku_image.csv'
+image_folder = 'images'
+
+try:
+    upload_hover_snippets_from_csv(
+        session=session,
+        THEME_ID=THEME_ID,
+        csv_path=csv_path,
+        image_folder=image_folder
+    )
+    print("✅ Hover image snippets uploaded successfully")
+except Exception as e:
+    print(f"❌ Failed to upload hover snippets: {e}")
+
+# Step 14: Upload Aesthetic Assets (CSS & JS)
+print("\n🎨 Step 14: Uploading Aesthetic Assets...")
+
+aesthetic_assets = [
+    "scrolling-banner.css",
+    "loader.css",
+    "aos.css",
+    "aos.js"
+]
 
 for asset in aesthetic_assets:
     try:
@@ -247,17 +283,48 @@ for asset in aesthetic_assets:
     except Exception as e:
         print(f"❌ Error uploading {asset}: {e}")
 
+# Step 15: Inject Asset References
 try:
     inject_assets_into_theme(aesthetic_assets)
+    print("✅ Asset references injected successfully")
 except Exception as e:
     print(f"❌ Failed to inject asset references: {e}")
 
-#try:
-    #inject_scrolling_banner()
-#except Exception as e:
-    #print(f"❌ Failed to inject scrolling banner: {e}")
-
+# Optional: Inject Splash Screen
 try:
     inject_splash_screen()
+    print("✅ Splash screen injected successfully")
 except Exception as e:
     print(f"❌ Failed to inject splash screen: {e}")
+
+# Step 16: Inject Multiple Hover Snippets into Theme File
+print("\n🧩 Step 16: Injecting Multiple Hover Snippets into Theme File...")
+
+import csv
+
+csv_path = os.path.join(FOLDER, 'csv', 'sku_images.csv')  # uses FOLDER from .env
+theme_file_path = "sections/main-product.liquid"  # Update if you want a different target
+
+# Count number of hover snippets based on CSV rows
+try:
+    with open(csv_path, 'r', encoding='utf-8') as file:
+        num_snippets = sum(1 for _ in csv.DictReader(file))
+    print(f"🔢 Found {num_snippets} hover snippet(s) in {csv_path}")
+except Exception as e:
+    print(f"❌ Failed to read CSV for snippet count: {e}")
+    num_snippets = 0
+
+# Inject all render tags into the theme file
+if num_snippets > 0:
+    try:
+        insert_multiple_snippets_into_theme_file(
+            session=session,
+            theme_id=THEME_ID,
+            theme_file_path=theme_file_path,
+            num_snippets=num_snippets,
+            insert_before=None  # Optional: anchor string if you want to inject before a known block
+        )
+    except Exception as e:
+        print(f"❌ Failed to inject snippet tags: {e}")
+else:
+    print("⚠️ Skipping snippet injection due to missing or empty CSV.")
